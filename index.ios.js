@@ -12,36 +12,27 @@ import {
   View
 } from 'react-native';
 
-import api from './utilities/nasaApi';
-// import mapsAPI from './utilities/mapsApi';
+import api from './utilities/api';
 
 export default class REACT extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      // pizza: {},
-      rover: []
+      rovers: []
     }
   }
 
   componentWillMount(){
-    // mapsAPI.getPizza().then((res) => {
-    //   this.setState({
-    //     pizza: res.pizza,
-    //   })
-    // });
-
     api.getRovers().then((res) => {
       this.setState({
-        rover: res.rover,
+        rovers: res.rovers,
       })
     });
   }
 
   render() {
-    // console.log("Pizza: ", this.state.pizza)
-    console.log("Rover: ", this.state.rover)
+    console.log("Rovers: ", this.state.rovers)
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
