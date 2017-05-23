@@ -19,7 +19,8 @@ export default class REACT extends Component {
   constructor(props){
     super(props);
     this.state = {
-      rovers: []
+      rovers: [],
+      roverName: ''
     }
   }
 
@@ -27,6 +28,7 @@ export default class REACT extends Component {
     api.getRovers().then((res) => {
       this.setState({
         rovers: res.rovers,
+        roverName: res.rovers[0].name
       })
     });
   }
@@ -37,6 +39,7 @@ export default class REACT extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
+          Rover: {this.state.roverName}
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
