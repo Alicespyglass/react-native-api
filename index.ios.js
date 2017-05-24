@@ -12,6 +12,8 @@ import {
   View
 } from 'react-native';
 
+import Config from 'react-native-config'
+
 import api from './utilities/api';
 
 export default class REACT extends Component {
@@ -19,16 +21,15 @@ export default class REACT extends Component {
   constructor(props){
     super(props);
     this.state = {
-      rovers: [],
-      roverName: ''
+      rovers: []
     }
   }
 
   componentWillMount(){
+    Config.REACT_APP_GOOGLE_API
     api.getRovers().then((res) => {
       this.setState({
-        rovers: res.rovers,
-        roverName: res.rovers[0].name
+        rovers: res.results
       })
     });
   }
@@ -39,7 +40,6 @@ export default class REACT extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
-          Rover: {this.state.roverName}
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
