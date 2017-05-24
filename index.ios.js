@@ -12,30 +12,31 @@ import {
   View
 } from 'react-native';
 
-import Config from 'react-native-config'
-
-import api from './utilities/api';
+import geocodeAPI from './utilities/geocodeAPI';
 
 export default class REACT extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      rovers: []
+      postcode: '',
+      address: [],
+      id: ''
     }
   }
 
   componentWillMount(){
-    Config.REACT_APP_GOOGLE_API
-    api.getRovers().then((res) => {
+    geocodeAPI.getAddress().then((res) => {
       this.setState({
-        rovers: res.results
+        address: res.results,
+        id: res.results[0].place_id
       })
     });
   }
 
   render() {
-    console.log("Rovers: ", this.state.rovers)
+    console.log("address based on postcode: ", this.state.address)
+    console.log("id: ", this.state.id)
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
