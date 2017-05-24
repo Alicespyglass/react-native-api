@@ -20,26 +20,39 @@ export default class REACT extends Component {
     super(props);
     this.state = {
       postcode: '',
-      address: [],
       lat: '',
-      id: ''
+      lng: '',
+      places_A: [],
+      places_B: []
     }
   }
 
   componentWillMount(){
     geocodeAPI.getAddress().then((res) => {
       this.setState({
-        address: res.results,
         lat: res.results[0].geometry.location.lat,
-        id: res.results[0].place_id
+        lng: res.results[0].geometry.location.lng,
       })
-    });
+    })
+
+    geocodeAPI.getPlacesA().then((res) => {
+      this.setState({
+        places_A: res.results
+      })
+    })
+
+    geocodeAPI.getPlacesB().then((res) => {
+      this.setState({
+        places_B: res.results
+      })
+    })
+
   }
 
   render() {
-    console.log("address based on postcode: ", this.state.address)
-    console.log("id: ", this.state.id)
     console.log("lat: ", this.state.lat)
+    console.log("lng: ", this.state.lng)
+    console.log("places: ", this.state.places_A)
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>

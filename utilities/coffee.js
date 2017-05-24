@@ -1,12 +1,13 @@
-var api = {
-  getRovers(){
+// returns objects based on location, radius and type
+
+var coffeeAPI = {
+  getPlaces(){
     // var url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=AIzaSyByFVMWrXcFmDawtZV1tqvn0fAXgVZe-DY`
 
     var params = {
         location: "-33.8670522,151.1957362",
         radius: "500",
-        type: "restaurant",
-        keyword: "cruise",
+        type: "coffee",
         key: 'AIzaSyByFVMWrXcFmDawtZV1tqvn0fAXgVZe-DY'
     };
 
@@ -21,4 +22,4 @@ var api = {
   }
 }
 
-module.exports = api;
+module.exports = coffeeAPI;
