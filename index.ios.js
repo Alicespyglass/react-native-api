@@ -21,6 +21,7 @@ export default class REACT extends Component {
     this.state = {
       postcode: '',
       address: [],
+      lat: '',
       id: ''
     }
   }
@@ -29,6 +30,7 @@ export default class REACT extends Component {
     geocodeAPI.getAddress().then((res) => {
       this.setState({
         address: res.results,
+        lat: res.results[0].geometry.location.lat,
         id: res.results[0].place_id
       })
     });
@@ -37,6 +39,7 @@ export default class REACT extends Component {
   render() {
     console.log("address based on postcode: ", this.state.address)
     console.log("id: ", this.state.id)
+    console.log("lat: ", this.state.lat)
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
