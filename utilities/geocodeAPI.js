@@ -60,7 +60,11 @@ var geocodeAPI = {
     var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + query
 
     return fetch(url).then((res) => res.json());
-  }
+  },
+
+  // placesOverlap(){
+
+  // }
 
 
 }

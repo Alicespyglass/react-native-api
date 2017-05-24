@@ -25,9 +25,9 @@ export default class REACT extends Component {
       places_A: [],
       places_B: []
     }
-  }
+  // }
 
-  componentWillMount(){
+  // componentWillMount(){
     geocodeAPI.getAddress().then((res) => {
       this.setState({
         lat: res.results[0].geometry.location.lat,
@@ -46,6 +46,10 @@ export default class REACT extends Component {
         places_B: res.results
       })
     })
+
+    // geocodeAPI.placesOverlap(){
+    //   console.log("places overlap")
+    // }
 
   }
 
